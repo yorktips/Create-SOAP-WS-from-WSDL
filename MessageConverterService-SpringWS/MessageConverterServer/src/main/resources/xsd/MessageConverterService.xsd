@@ -1,0 +1,543 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5. --><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.messageconverter.york.com/" targetNamespace="http://webservices.messageconverter.york.com/" version="1.0">
+
+  <xs:element name="error" type="tns:error"/>
+
+  <xs:element name="generate" type="tns:generate"/>
+
+  <xs:element name="generateResponse" type="tns:generateResponse"/>
+
+  <xs:element name="masterRecord" type="tns:masterRecord"/>
+
+  <xs:element name="parse" type="tns:parse"/>
+
+  <xs:element name="parseResponse" type="tns:parseResponse"/>
+
+  <xs:element name="validate" type="tns:validate"/>
+
+  <xs:element name="validateResponse" type="tns:validateResponse"/>
+
+  <xs:complexType name="generate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:messageGenerateRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="messageGenerateRequest">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="convertibleInterbankMessages" nillable="true" type="tns:convertibleInterbankMessage"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="convertibleInterbankMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ackCustomerReferenceNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="ackCustomerTimestamp" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="ackErrorCode" type="xs:string"/>
+      <xs:element name="ackFlag" type="xs:boolean"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="errors" nillable="true" type="tns:error"/>
+      <xs:element minOccurs="0" name="masterRecord" type="tns:masterRecord"/>
+      <xs:element minOccurs="0" name="messageFlow" type="tns:messageFlow"/>
+      <xs:element minOccurs="0" name="messageFormat" type="tns:messageFormat"/>
+      <xs:element name="messageIndex" type="xs:int"/>
+      <xs:element minOccurs="0" name="messagePosition" type="tns:messagePosition"/>
+      <xs:element minOccurs="0" name="messagePurpose" type="tns:messagePurpose"/>
+      <xs:element minOccurs="0" name="messageText" type="xs:string"/>
+      <xs:element name="messageTotal" type="xs:int"/>
+      <xs:element minOccurs="0" name="messageType" type="xs:string"/>
+      <xs:element minOccurs="0" name="receiverId" type="xs:string"/>
+      <xs:element minOccurs="0" name="senderId" type="xs:string"/>
+      <xs:element minOccurs="0" name="transactionReferenceId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="error">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="severity" type="tns:severity"/>
+      <xs:element minOccurs="0" name="errorId" type="xs:string"/>
+      <xs:element minOccurs="0" name="errorCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="tagId" type="xs:string"/>
+      <xs:element minOccurs="0" name="errorText" type="xs:string"/>
+      <xs:element minOccurs="0" name="value" type="xs:string"/>
+      <xs:element minOccurs="0" name="validationRule" type="xs:string"/>
+      <xs:element name="details">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string"/>
+                  <xs:element minOccurs="0" name="value" type="xs:string"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="masterRecord">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="systemType" type="xs:string"/>
+      <xs:element minOccurs="0" name="transactionReferenceNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="messageIndex" type="xs:string"/>
+      <xs:element minOccurs="0" name="messageTotal" type="xs:string"/>
+      <xs:element minOccurs="0" name="messagePurpose" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerReferenceNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="messageCreationDateTime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="methodOfIssue" type="xs:string"/>
+      <xs:element minOccurs="0" name="methodOfIssueDetails" type="xs:string"/>
+      <xs:element minOccurs="0" name="settlementAccountNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="bankChargesPayableBy" type="xs:string"/>
+      <xs:element minOccurs="0" name="bankChargesPayableByDetails" type="xs:string"/>
+      <xs:element minOccurs="0" name="chargesAccountNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="confirmationChargersPayableBy" type="xs:string"/>
+      <xs:element minOccurs="0" name="transportMode" type="xs:string"/>
+      <xs:element minOccurs="0" name="transportModeDetails" type="xs:string"/>
+      <xs:element minOccurs="0" name="forwardContractReferenceNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="applicantUndertaking" type="xs:string"/>
+      <xs:element minOccurs="0" name="sequence" type="xs:string"/>
+      <xs:element minOccurs="0" name="sequenceOfTotal" type="xs:string"/>
+      <xs:element minOccurs="0" name="formOfDocumentaryCredit" type="xs:string"/>
+      <xs:element minOccurs="0" name="documentaryCreditNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="referenceToPreAdvice" type="xs:string"/>
+      <xs:element minOccurs="0" name="dateOfIssue" type="xs:date"/>
+      <xs:element minOccurs="0" name="applicableRules" type="xs:string"/>
+      <xs:element minOccurs="0" name="applicableRulesDetails" type="xs:string"/>
+      <xs:element minOccurs="0" name="expiryDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="expiryPlace" type="xs:string"/>
+      <xs:element minOccurs="0" name="advisingBankPartyIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="advisingBankIdentifierCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="advisingBankNameAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="applicantBankPartyIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="applicantBankIdentifierCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="applicantBankNameAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="applicantBankLocation" type="xs:string"/>
+      <xs:element minOccurs="0" name="applicantNameAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="beneficiaryAccountNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="beneficiaryNameAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="beneficiaryContact" type="xs:string"/>
+      <xs:element minOccurs="0" name="lcCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="lcAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="tolerancePlus" type="xs:int"/>
+      <xs:element minOccurs="0" name="toleranceMinus" type="xs:int"/>
+      <xs:element minOccurs="0" name="maximumCreditAmount" type="xs:string"/>
+      <xs:element minOccurs="0" name="additionalAmountsCovered" type="xs:string"/>
+      <xs:element minOccurs="0" name="availableWithIdentifierCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="availableWithCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="availableWithNameAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="availableByCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="draftsAt" type="xs:string"/>
+      <xs:element minOccurs="0" name="draweePartyIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="draweeIdentifierCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="draweeNameAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="draweeCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="mixedDefPaymentDetails" type="xs:string"/>
+      <xs:element minOccurs="0" name="partialShipments" type="xs:string"/>
+      <xs:element minOccurs="0" name="transhipment" type="xs:string"/>
+      <xs:element minOccurs="0" name="placeOfTakingInCharge" type="xs:string"/>
+      <xs:element minOccurs="0" name="portOfLoading" type="xs:string"/>
+      <xs:element minOccurs="0" name="portOfDischarge" type="xs:string"/>
+      <xs:element minOccurs="0" name="placeOfFinalDestination" type="xs:string"/>
+      <xs:element minOccurs="0" name="latestDateOfShipment" type="xs:date"/>
+      <xs:element minOccurs="0" name="shipmentPeriod" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="descriptionOfGoods" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="documentsRequired" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="additionalConditions" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="charges" type="xs:string"/>
+      <xs:element minOccurs="0" name="periodForPresentation" type="xs:string"/>
+      <xs:element minOccurs="0" name="confirmationInstructions" type="xs:string"/>
+      <xs:element minOccurs="0" name="reimbursingBankIdentifierCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="reimbursingBankPartyIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="reimbursingBankNameAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="instructions" type="xs:string"/>
+      <xs:element minOccurs="0" name="adviseThroughBankIdentifierCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="adviseThroughBankPartyIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="adviseThroughBankNameAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="senderToReceiverInfo" type="xs:string"/>
+      <xs:element minOccurs="0" name="issuingBankIdentifierCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="issuingBankPartyIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="issuingBankNameAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="senderContact" type="xs:string"/>
+      <xs:element minOccurs="0" name="issuingBankReferenceNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="receiversReference" type="xs:string"/>
+      <xs:element minOccurs="0" name="dateOfAmendment" type="xs:date"/>
+      <xs:element minOccurs="0" name="numberOfAmendment" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="narrative" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="amendmentCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="increaseAmount" type="xs:string"/>
+      <xs:element minOccurs="0" name="decreaseAmount" type="xs:string"/>
+      <xs:element minOccurs="0" name="advisingBankReferenceNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="confirmationInfo" type="xs:string"/>
+      <xs:element minOccurs="0" name="confirmationIndicator" type="xs:string"/>
+      <xs:element minOccurs="0" name="kindOfGuarantee" type="xs:string"/>
+      <xs:element minOccurs="0" name="guaranteeType" type="xs:string"/>
+      <xs:element minOccurs="0" name="guaranteeTypeDetails" type="xs:string"/>
+      <xs:element minOccurs="0" name="formOfGuarantee" type="xs:string"/>
+      <xs:element minOccurs="0" name="wordingCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="specialTerms" type="xs:string"/>
+      <xs:element minOccurs="0" name="wordingLanguage" type="xs:string"/>
+      <xs:element minOccurs="0" name="altApplicantNameAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="indicatorOfAlternativeBeneficialOwner" type="xs:string"/>
+      <xs:element minOccurs="0" name="amountType" type="xs:string"/>
+      <xs:element minOccurs="0" name="validityType" type="xs:string"/>
+      <xs:element minOccurs="0" name="expectedExpiryDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="validUntil" type="xs:string"/>
+      <xs:element minOccurs="0" name="deliveryTo" type="xs:string"/>
+      <xs:element minOccurs="0" name="deliveryAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="liabilityDetails" type="xs:string"/>
+      <xs:element minOccurs="0" name="referenceCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="guaranteeReference" type="xs:string"/>
+      <xs:element minOccurs="0" name="referenceDate1" type="xs:date"/>
+      <xs:element minOccurs="0" name="referenceDate2" type="xs:date"/>
+      <xs:element minOccurs="0" name="contractCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="contractAmount" type="xs:string"/>
+      <xs:element minOccurs="0" name="guaranteeValueInPercent" type="xs:string"/>
+      <xs:element minOccurs="0" name="extensionCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="extensionDetails" type="xs:string"/>
+      <xs:element minOccurs="0" name="extensionNotice" type="xs:string"/>
+      <xs:element minOccurs="0" name="multipleDrawings" type="xs:string"/>
+      <xs:element minOccurs="0" name="partialDrawings" type="xs:string"/>
+      <xs:element minOccurs="0" name="drawingRequirements" type="xs:string"/>
+      <xs:element minOccurs="0" name="secondaryCreditBeneficiary" type="xs:string"/>
+      <xs:element minOccurs="0" name="secondaryCreditBeneficiaryContact" type="xs:string"/>
+      <xs:element minOccurs="0" name="secondaryCreditTypeCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="secondaryCreditTypeDetails" type="xs:string"/>
+      <xs:element minOccurs="0" name="secondaryCreditCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="secondaryCreditAmount" type="xs:string"/>
+      <xs:element minOccurs="0" name="secondaryCreditExpiryDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="creditPurpose" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="guaranteeDetails" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="furtherIdentification" type="xs:string"/>
+      <xs:element minOccurs="0" name="chargesDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="chargesCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="chargesAmount" type="xs:string"/>
+      <xs:element minOccurs="0" name="amountSpecification" type="xs:string"/>
+      <xs:element minOccurs="0" name="additionalRemarks" type="xs:string"/>
+      <xs:element minOccurs="0" name="advisingBankCharges" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerNoOrAccountNo" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstAdvisingBankIdentifierCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstAdvisingBankNameAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstAdvisingBankReference" type="xs:string"/>
+      <xs:element minOccurs="0" name="transferringBankIdentifierCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="transferringBankNameAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="transferringBankReference" type="xs:string"/>
+      <xs:element minOccurs="0" name="advisingDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="advisingBankComments" type="xs:string"/>
+      <xs:element minOccurs="0" name="fileIdentification" type="xs:string"/>
+      <xs:element minOccurs="0" name="preadviceReference" type="xs:string"/>
+      <xs:element minOccurs="0" name="nonBankIssuer" type="xs:string"/>
+      <xs:element minOccurs="0" name="thirdPartyReference" type="xs:string"/>
+      <xs:element minOccurs="0" name="messageReason" type="xs:string"/>
+      <xs:element minOccurs="0" name="recourseIndicator" type="xs:string"/>
+      <xs:element minOccurs="0" name="amountClaimedCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="amountClaimed" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="counterpartyChargesCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="counterpartyCharges" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="totalAmountClaimedCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="totalAmountClaimed" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="ownChargesAmountCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownChargesAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="feeType" type="xs:string"/>
+      <xs:element minOccurs="0" name="feeCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="feeAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="debitAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="refundAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="calculationFrom" type="xs:date"/>
+      <xs:element minOccurs="0" name="calculationTo" type="xs:date"/>
+      <xs:element minOccurs="0" name="commissionRate" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="latestDateForReply" type="xs:date"/>
+      <xs:element minOccurs="0" name="debitAmountCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="refundAmountCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="extensionExpiryDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="methodOfTransmission" type="xs:string"/>
+      <xs:element minOccurs="0" name="methodOfTransmissionDetails" type="xs:string"/>
+      <xs:element minOccurs="0" name="methodOfDelivery" type="xs:string"/>
+      <xs:element minOccurs="0" name="methodOfDeliveryDetails" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownChargesDetails" type="xs:string"/>
+      <xs:element minOccurs="0" name="confirmingBankReferenceNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="confirmingBankIdentifierCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="additionalAmountsCoveredCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="receivedOnDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="issuingBankContact" type="xs:string"/>
+      <xs:element minOccurs="0" name="advisingBankContact" type="xs:string"/>
+      <xs:element minOccurs="0" name="drawCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="drawAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="drawDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="discrepancies" type="xs:string"/>
+      <xs:element minOccurs="0" name="notifiedDiscrepancies" type="xs:string"/>
+      <xs:element minOccurs="0" name="localDiscrepencies" type="xs:string"/>
+      <xs:element minOccurs="0" name="disposalOfDocuments" type="xs:string"/>
+      <xs:element minOccurs="0" name="dateOfAdviceOfDiscrepancy" type="xs:date"/>
+      <xs:element minOccurs="0" name="receiversCorrespondentPartyIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="receiversCorrespondentIdentifierCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="receiversCorrespondentNameAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="secondBeneficiaryAdvisingBankPartyIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="secondBeneficiaryAdvisingBankIdentifierCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="secondBeneficiaryAdvisingBankNameAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="secondBeneficiaryNameAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="secondBeneficiaryReferenceNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="secondBeneficiaryCustomerContact" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstBeneficiaryNameAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstBeneficiaryCustomerContact" type="xs:string"/>
+      <xs:element minOccurs="0" name="dateOfPresentation" type="xs:date"/>
+      <xs:element minOccurs="0" name="deferredPaymentDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="notificationStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="detailsOfCommissionAndCharges" type="xs:string"/>
+      <xs:element minOccurs="0" name="externalExpensesCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="externalExpensesAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="agentsCommissionCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="agentsCommissionAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="assignedTransferredCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="assignedTransferredAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="redirectedCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="redirectedAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="settlementAccountTotalCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="settlementAccountTotalAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="valueDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="customerIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="commissionCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="commissionAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="dateOfMaturity" type="xs:date"/>
+      <xs:element minOccurs="0" name="settlementAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="settlementAmountCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="exchangeRate" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="countervalueAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="countervalueAmountCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="advisingBankAdditionalReferenceNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="documentsSentVia" type="xs:string"/>
+      <xs:element minOccurs="0" name="courierName" type="xs:string"/>
+      <xs:element minOccurs="0" name="courierReferenceNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="paymentDate" type="xs:date"/>
+      <xs:element minOccurs="0" name="sightCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="sightAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="deferredPaymentCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="deferredPaymentAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="discrepancyRemark" type="xs:int"/>
+      <xs:element minOccurs="0" name="discrepanciesAgreedUponWith" type="xs:string"/>
+      <xs:element minOccurs="0" name="liabilityRemark" type="xs:string"/>
+      <xs:element minOccurs="0" name="counterValueCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="counterValueAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="reservationIdentifier" type="xs:int"/>
+      <xs:element minOccurs="0" name="increaseAmountCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="decreaseAmountCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="totalUtilizationAmountCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="totalUtilizationAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="sendersCorrespondentPartyIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="sendersCorrespondentIdentifierCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="sendersCorrespondentNameAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="referenceNo" type="xs:string"/>
+      <xs:element minOccurs="0" name="netAmountCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="netAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="chargesClaimed" type="xs:string"/>
+      <xs:element minOccurs="0" name="chargesAdded" type="xs:string"/>
+      <xs:element minOccurs="0" name="additionalAmountsCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="additionalAmounts" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="amountBeforeCharges" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="amountBeforeChargesCurrency" type="xs:string"/>
+      <xs:element minOccurs="0" name="paymentTerms" type="xs:string"/>
+      <xs:element minOccurs="0" name="adviseThroughBankLocation" type="xs:string"/>
+      <xs:element minOccurs="0" name="senderInfo" type="xs:string"/>
+      <xs:element minOccurs="0" name="receiverInfo" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="generateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:messageGenerateResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="messageGenerateResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="convertibleInterbankMessages" nillable="true" type="tns:convertibleInterbankMessage"/>
+      <xs:element minOccurs="0" name="serviceStatus" type="tns:serviceStatus"/>
+      <xs:element minOccurs="0" name="serviceStatusDescription" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="parse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:messageParseRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="messageParseRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="source" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="parseResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:messageParseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="messageParseResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="parsedMessages" nillable="true" type="tns:convertibleInterbankMessage"/>
+      <xs:element minOccurs="0" name="serviceStatus" type="tns:serviceStatus"/>
+      <xs:element minOccurs="0" name="serviceStatusDescription" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="validate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:bundleValidateRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bundleValidateRequest">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="bundleMessages" nillable="true" type="tns:convertibleInterbankMessage"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="validateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:bundleValidateResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bundleValidateResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="bundleErrors" nillable="true" type="tns:error"/>
+      <xs:element minOccurs="0" name="serviceStatus" type="tns:serviceStatus"/>
+      <xs:element minOccurs="0" name="serviceStatusDescription" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="severity">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FATAL"/>
+      <xs:enumeration value="SYSTEM"/>
+      <xs:enumeration value="MESSAGE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="messageFlow">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="B2B"/>
+      <xs:enumeration value="B2C"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="messageFormat">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SWIFT"/>
+      <xs:enumeration value="SWIFT_ACK"/>
+      <xs:enumeration value="DTA"/>
+      <xs:enumeration value="GTC"/>
+      <xs:enumeration value="BOLERO"/>
+      <xs:enumeration value="TSU"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="messagePosition">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INDEX"/>
+      <xs:enumeration value="DETAIL"/>
+      <xs:enumeration value="EXTENSION1"/>
+      <xs:enumeration value="EXTENSION2"/>
+      <xs:enumeration value="EXTENSION3"/>
+      <xs:enumeration value="EXTENSION4"/>
+      <xs:enumeration value="EXTENSION5"/>
+      <xs:enumeration value="EXTENSION6"/>
+      <xs:enumeration value="EXTENSION7"/>
+      <xs:enumeration value="EXTENSION8"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="messagePurpose">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ILC_APPLICATION"/>
+      <xs:enumeration value="ILC_NOTIFICATION_OF_ISSUANCE"/>
+      <xs:enumeration value="ILC_AMENDMENT_REQUEST"/>
+      <xs:enumeration value="ILC_AMMENDMENT_NOTIFICATION"/>
+      <xs:enumeration value="ILC_ACCEPTANCE_NOTIFICATION"/>
+      <xs:enumeration value="ILC_ADVICE_OF_DISCREPANCY"/>
+      <xs:enumeration value="ILC_RESPONCE_TO_DISCREPANCY"/>
+      <xs:enumeration value="ILC_SETTLEMENT_OF_PAYMENT"/>
+      <xs:enumeration value="CREDIT_ADVICE"/>
+      <xs:enumeration value="AMENDMENT_ADVICE"/>
+      <xs:enumeration value="THIRD_PARTY_BANK_ADVICE"/>
+      <xs:enumeration value="TRANSFER_ADVICE"/>
+      <xs:enumeration value="ELC_AMENDMENT_ACCEPT_REFUSE_ADVICE"/>
+      <xs:enumeration value="ELC_PRESENTATION_RESPONSE"/>
+      <xs:enumeration value="ELC_TRANSFER_REQUEST"/>
+      <xs:enumeration value="ELC_ILC_ADVICE_OF_DISCHARGE"/>
+      <xs:enumeration value="ELC_ILC_ADVICE_OF_REFUSAL"/>
+      <xs:enumeration value="ELC_AUTHORISATION_TO_PAY"/>
+      <xs:enumeration value="ELC_ILC_ADVICE_OF_PAYMENT"/>
+      <xs:enumeration value="ELC_ILC_ADVICE_OF_REIMBURSEMENT"/>
+      <xs:enumeration value="ELC_SETTLEMENT_PAYMENT_CHARGES"/>
+      <xs:enumeration value="GIS_APPLICATION"/>
+      <xs:enumeration value="GIS_ISSUANCE_NOTIFICATION"/>
+      <xs:enumeration value="GIS_AMENDMENT_REQUEST"/>
+      <xs:enumeration value="GIS_AMENDMENT_NOTIFICATION"/>
+      <xs:enumeration value="GIS_STANDBY_LOC"/>
+      <xs:enumeration value="GIS_STANDBY_LOC_NOTIFICATION"/>
+      <xs:enumeration value="GIS_STANDBY_AMENDMENT"/>
+      <xs:enumeration value="GIS_STANDBY_AMENDMENT_NOTIFICATION"/>
+      <xs:enumeration value="GIS_EXTEND_OR_PAY_QUERY"/>
+      <xs:enumeration value="GIS_EXTEND_OR_PAY_RESPONSE"/>
+      <xs:enumeration value="GIS_CLAIM_INFORMATION"/>
+      <xs:enumeration value="GIS_CLAIM_SETTLEMENT_OR_CHARGES"/>
+      <xs:enumeration value="GIS_REDUCTION_RELEASE_REQUEST"/>
+      <xs:enumeration value="GIS_REDUCTION_RELEASE_ADVICE"/>
+      <xs:enumeration value="GTR_ADVICE_OF_ISSUED_GUARANTEE"/>
+      <xs:enumeration value="GTR_ADVICE_OF_ISSUED_SLC"/>
+      <xs:enumeration value="GTR_ADVICE_OF_AMENDED_GUARANTEE"/>
+      <xs:enumeration value="GTR_ADVICE_OF_AMENDED_SLC"/>
+      <xs:enumeration value="GTR_CLAIM_FOR_PAYMENT"/>
+      <xs:enumeration value="GTR_ACKNOWLEDGEMENT_OF_CLAIM_FOR_PAYMENT"/>
+      <xs:enumeration value="CORPORATE_TO_BANK_FREE_FORMAT"/>
+      <xs:enumeration value="BANK_TO_CORPORATE_FREE_FORMAT"/>
+      <xs:enumeration value="B2B_CREDIT_ADVICE"/>
+      <xs:enumeration value="B2B_AMENDMENT_ADVICE"/>
+      <xs:enumeration value="B2B_THIRD_PARTY_BANK_ADVICE"/>
+      <xs:enumeration value="B2B_TRANSFER_ADVICE"/>
+      <xs:enumeration value="BANK_TO_BANK_FREE_FORMAT"/>
+      <xs:enumeration value="ELC_RECEIPT_OF_DOCUMENTS"/>
+      <xs:enumeration value="ELC_MATURITY_DATE_INFORMATION"/>
+      <xs:enumeration value="ELC_ADVICE_OF_SETTLEMENT"/>
+      <xs:enumeration value="ELC_ADVICE_OF_CHARGES"/>
+      <xs:enumeration value="SETTLEMENT_CHARGES_NOTIFICATION"/>
+      <xs:enumeration value="SETTLEMENT_CHARGES_REQUEST"/>
+      <xs:enumeration value="InitialBaselineSubmissionV03"/>
+      <xs:enumeration value="BaselineReSubmissionV03"/>
+      <xs:enumeration value="DataSetSubmissionV03"/>
+      <xs:enumeration value="BaselineAmendmentRequestV03"/>
+      <xs:enumeration value="AmendmentAcceptanceV02"/>
+      <xs:enumeration value="AmendmentRejectionV02"/>
+      <xs:enumeration value="MisMatchAcceptanceV02"/>
+      <xs:enumeration value="MisMatchRejectionV02"/>
+      <xs:enumeration value="IntentToPayNotificationV01"/>
+      <xs:enumeration value="AcknowledgementV03"/>
+      <xs:enumeration value="AmendmentAcceptanceNotificationV03"/>
+      <xs:enumeration value="AmendmentRejectionNotificationV03"/>
+      <xs:enumeration value="BaselineMatchReportV03"/>
+      <xs:enumeration value="BaselineReportV03"/>
+      <xs:enumeration value="DataSetMatchReportV03"/>
+      <xs:enumeration value="DeltaReportV03"/>
+      <xs:enumeration value="ErrorReportV03"/>
+      <xs:enumeration value="ForwardDataSetSubmissionReportV03"/>
+      <xs:enumeration value="FullPushThroughReportV03"/>
+      <xs:enumeration value="MisMatchAcceptanceNotificationV03"/>
+      <xs:enumeration value="MisMatchRejectionNotificationV03"/>
+      <xs:enumeration value="ActionReminderV03"/>
+      <xs:enumeration value="TimeOutNotificationV03"/>
+      <xs:enumeration value="ForwardIntentToPayNotificationV01"/>
+      <xs:enumeration value="IntentToPayReportV01"/>
+      <xs:enumeration value="ATTACHMENT"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="serviceStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS"/>
+      <xs:enumeration value="FAILURE"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

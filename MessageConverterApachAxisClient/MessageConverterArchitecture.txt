@@ -1,0 +1,141 @@
+       High Level Design of MessageConverter SOAP Client        [Page 1]
+       
+
+ABC Corporation                                                York Chen
+                                                           December 2017
+
+Status of this Memo
+   This document specifies a MessageConverter SOAP client
+
+
+Table of Contents
+   1          Application Architecture ............................    1
+   2          Apache AXIS SOAP client tool ........................    1
+   3          Generate the CLIENT PROXY and INVOKER code ..........    2
+   4          MessageConverterClient class diagram  ...............    3
+
+
+1 Message converter application arichetucture
+
+   +----------+        +-----------------+     HTTP     +------------+
+   |   EJB    +<-------+  SpringMVC/JSP  +<------------>+   Browser  +
+   +----------+        +-----------------+    GET/POST  +------------+
+         |
+         |
+   +------------------------+              +-------------------------+ 
+   | MessageConverterClient +              + MessageConverterService + 
+   +------------------------+              +         (SOAP WS)       + 
+      +  WSDL +                            +-------------------------+
+      + ------+                                    +  WSDL + 
+         |                                         + ------+  
+         |                      SOAP                    |
+         +<-------------------------------------------->+ 
+                                         
+2 Apache AXIS SOAP client tool
+   o  Web services framework is an XML-based distributed services system
+   o  SOAP, WSDL
+   o  SOAP is an envelope for transferring messages
+   o  Generated client stubs will even hide SOAP classes behind a local 
+      “façade” that looks like a local class but actually constructs SOA
+      P calls to the remote server
+
+	  
+	  
+	  
+	  
+	  
+  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+3 Generate the CLIENT PROXY and INVOKER code                    [Page 2]
+
+   +-----------------------------------------------------------+
+   +                   «Interface»                             +          
+   +         MessageConverterDelegate                          +<----+
+   +-----------------------------------------------------------+     |
+   +  MessageParseResponse parse(MessageParseRequest)          +     |
+   +    throws RemoteException                                 +     |
+   +  BundleValidateResponse validate(                         +     | 
+   +    ConvertibleInterbankMessage[]) throws RemoteException  +     |                 
+   +  MessageGenerateResponse generate(                        +     |
+   +    MConvertibleInterbankMessage[]) throws RemoteException +     |
+   +-----------------------------------------------------------+     |
+                          ^                   ^                      |
+                          |                   |                      | 
+   +---------------------------------+        |                      |
+   +          «Invoker»              +<--+    |                      |
+   + MessageConverterDelegateProxy   +   |    |                      |
+   +---------------------------------+   |    |                      |
+   +---------------------------------+   |    |                      |
+                             «proxy for» |    |                      |
+   +---------------------------------+   |    |                      |
+   +       «Client Proxy»            +---+    |                      |
+   + MessageConverterPortBindingStub +--------+                      |
+   +---------------------------------+                               |
+   +---------------------------------+<-------+                      |
+                                              |                      |
+                                              |                      |
+   +---------------------------------+        |            «creates» |
+   +     «Interface, Factory»        + -------|----------------------+           
+   +    MessageConverterService      +        |     
+   +---------------------------------+        |
+   +---------------------------------+<---+   |
+                                          |   |
+   +---------------------------------+    |   |
+   +           «Factory»             +----+   |
+   + MessageConverterServiceLocator  +        |
+   +---------------------------------+--------+ 
+   +---------------------------------+
+                                           
+
+
+	  
+4 MessageConverterClient class diagram                          [Page 3]
+
+   +-----------------------------------------------------------------+
+   +           +-----------------------------------+                 +
+   +           +         «Invoker»                 +                 +
+   +           +   MessageConverterDelegateProxy   +--------+        +
+   +           +-----------------------------------+        |        +
+   +           +-----------------------------------+        |        +
+   +                                                        |        +
+   +--------------------------------------------------------|--------+
+                                                            |
+                                                            |
+                                                            |
+   +--------------------------------------------------------|--------+
+   +                                                        v        +
+   + +------------------------------------------------------+----+   +
+   + +                   «Client Object»                         +   +
+   + +              MessageConverterClientImpl                   +   +
+   + +-----------------------------------------------------------+   +
+   + +  MessageParseResponse parse(MessageParseRequest)          +   +
+   + +    throws RemoteException                                 +   +
+   + +  BundleValidateResponse validate(                         +   +
+   + +    ConvertibleInterbankMessage[]) throws RemoteException  +   +
+   + +  MessageGenerateResponse generate(                        +   +
+   + +    MConvertibleInterbankMessage[]) throws RemoteException +   +
+   + +-----------------------------------------------------------+   +
+   +                           |                                     +
+   +                           v                                     +
+   + +-----------------------------------------------------------+   +
+   + +                     «Interfac»                            +   +
+   + +                 MessageConverterClient                    +   +
+   + +-----------------------------------------------------------+   +
+   + +  MessageParseResponse parse(MessageParseRequest)          +   +
+   + +    throws RemoteException                                 +   +
+   + +  BundleValidateResponse validate(                         +   +
+   + +    ConvertibleInterbankMessage[]) throws RemoteException  +   +
+   + +  MessageGenerateResponse generate(                        +   +
+   + +    MConvertibleInterbankMessage[]) throws RemoteException +   +
+   + +-----------------------------------------------------------+   +
+   + ----------------------------------------------------------------+

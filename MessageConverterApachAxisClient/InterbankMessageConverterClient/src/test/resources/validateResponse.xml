@@ -1,0 +1,29 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <soapenv:Body>
+      <validateResponse xmlns="http://webservices.messageconverter.gtc.com/">
+         <return xmlns="">
+            <bundleErrors>
+               <severity>MESSAGE</severity>
+               <errorId>errorId1</errorId>
+               <errorCode>errorCode</errorCode>
+               <tagId>tagId</tagId>
+               <errorText>errorText</errorText>
+               <value>value</value>
+               <validationRule>validationRule</validationRule>
+               <details>
+                  <entry>
+                     <key>key1</key>
+                     <value>error1</value>
+                  </entry>
+                  <entry>
+                     <key>key2</key>
+                     <value>Detail2</value>
+                  </entry>
+               </details>
+            </bundleErrors>
+            <serviceStatus>SUCCESS</serviceStatus>
+            <serviceStatusDescription>serviceStatusDescription</serviceStatusDescription>
+         </return>
+      </validateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
